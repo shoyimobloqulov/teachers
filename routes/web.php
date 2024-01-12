@@ -18,6 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/documents/create',[ProfileController::class,'documentsCreate'])->name('documents.create');
     Route::get('/documents/{id}/edit',[ProfileController::class,'editFile'])->name('documents.edit');
     Route::delete('/documents/delete/{id}',[ProfileController::class,'destroyFile'])->name('documents.destroy');
+    Route::post('/profile/faculty/{id}/update',[ProfileController::class,'UserFaculty'])->name('faculty.update');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
