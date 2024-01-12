@@ -36,5 +36,25 @@
                 {{ $slot }}
             </main>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+        <script>
+            function showConfirmation() {
+                Swal.fire({
+                    title: "Rostdan ham o'chirmoqchimisiz?",
+                    text: "Tanlangan ma'lumotni o'chirish uchun tasdiqlang",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Ha",
+                    cancelButtonText: "Yo'q",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('deleteForm').submit();
+                    }
+                });
+            }
+        </script>
     </body>
 </html>

@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -66,6 +67,19 @@ class ProfileController extends Controller
     }
     public function documentsCreate(){
         return view('dcreate');
+    }
+
+    public function editFile($id){
+        return view('dedit',compact('id'));
+    }
+
+
+    public function destroyFile($id)
+    {
+        $file = File::find($id);
+        Storage::delete('uploads/'.$file->path);
+        $file->delete();
+        return redirect()->back();
     }
 
 }
